@@ -17,8 +17,16 @@
 
   //Add an event listener to listen to results, when callback it returns an event.
  recognition.onresult = function(event) {
+ 	const transcript1 = Array.from(event.results).map(result => result[0]).map(result => result.transcript).join('');
     console.log('You said: ', event.results[0][0].transcript);
+    console.log(transcript1)
+    if(event.results[0].isFinal){
+    	p = document.createElement('p');
+    	words.appendChild(p);
+    }
  };
 
+  //Restart recognition after events.
+  recognition.addEventListener('end', recognition.start);
   //Request for microphone access.
   recognition.start();

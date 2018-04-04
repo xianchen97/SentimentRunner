@@ -12,6 +12,7 @@
     "browser-sync": "^2.12.5 <2.23.2"
   },
   "dependencies": {
+    "phaser": "^3.3.0",
     "sentiment": "^4.2.0"
   }
 }

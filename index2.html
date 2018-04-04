@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.1.1/dist/phaser.js"></script>
+</head>
+<body>
+ 
+    <script>
+    var config = {
+    type: Phaser.AUTO,
+    width: 2048,
+    height: 1536,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 200 }
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create
+    }
+};
+
+//Creates a game configuration using phaser.
+var game = new Phaser.Game(config);
+ 
+ //Function is used for loading game assets.
+function preload ()
+{
+        this.load.image('forest', './assets/Background.png');
+        this.load.image('platform', './assets/platform.png');
+}
+ 
+function create ()
+{
+    //Add backgroung image.
+    this.add.image(1024, 768, 'forest');
+    //Create a static physics group.
+    platforms = this.physics.add.staticGroup();
+    //Create the bottom platform.
+    for(i = 1; i < 2048; i++){
+        var px = i * 64;
+        platforms.create(i, 1536-64, 'platform');
+    }
+}
+    </script> 
+ 
+</body>
+</html>
