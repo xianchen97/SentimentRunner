@@ -4,10 +4,9 @@
   https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
   **/
 
-  //Request speech regonition access, cross browser support.
-  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || || window.mozSpeechRecognition || window.msSpeechRecognition;
   //Create the speech recognition object.
-  const recognition = new SpeechRecognition();
+  console.log("hi");
+	var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 
   //Property that defines whether results should be returned intermittently. -- Need to define whether it is random
   recognition.interimResults = true;
@@ -17,9 +16,9 @@
 
 
   //Add an event listener to listen to results, when callback it returns an event.
-  recognition.addEventListener('results', e => {
-  	console.log(e.results);
-  });
+ recognition.onresult = function(event) {
+    console.log('You said: ', event.results[0][0].transcript);
+ };
 
   //Request for microphone access.
   recognition.start();
