@@ -15,4 +15,11 @@
   //Set recognition language to english
   recognition.lang = 'en-US';
 
-  
+
+  //Add an event listener to listen to results, when callback it returns an event.
+  recognition.addEventListener('results', e => {
+  	console.log(e.results);
+  });
+
+  //Request for microphone access.
+  recognition.start();
