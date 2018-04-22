@@ -13,17 +13,16 @@ onload = function(){
      e.stopPropagation();
   });
 
-  $("#babyButton").click(function(e) {
-     fname.textContent = firstName();
+  $("#firstName").click(function(e) {
+     $(this).attr('contentEditable',true);
      e.stopPropagation();
   });
 
-  $('#lastName').bind('click',
-    function(e){
-        $(this).attr('contentEditable',true);
-        e.stopPropagation();
+  $("#lastName").click(function(e) {
+      $(this).attr('contentEditable',true);
+     e.stopPropagation();
+  });
 
-    });
 
   body.addEventListener('dblclick', () => {
     if(male_or_f == 1){
@@ -36,6 +35,27 @@ onload = function(){
     }
 
   });
+
+  $('#lastName').keydown(function(e) {
+    // trap the return key being pressed
+    if (e.keyCode === 13) {
+      // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+      // prevent the default behaviour of return key pressed
+      return false;
+    }
+  });
+
+   $('#firstName').keydown(function(e) {
+    // trap the return key being pressed
+    if (e.keyCode === 13) {
+      // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+      // prevent the default behaviour of return key pressed
+      fname = random_name({ seed: fname.textContent })
+      return false;
+    }
+  });
+
+
   document.addEventListener('DOMContentLoaded', function() {
     fname.textContent = possibleNames[0];
   }, false);
@@ -58,7 +78,9 @@ window.gender = function getNameGender(name){
     return data.gender;
             
  });
+
 }
+
 },{"node-random-name":3}],2:[function(require,module,exports){
 (function (root, factory) {
   if (typeof exports === 'object') {
