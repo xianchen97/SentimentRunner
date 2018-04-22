@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <link rel="stylesheet" type="text/css" href="./genpage.css">
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		 <script src="./bundle.js"></script>
+		 <script>
+		 	onload = function(){
+		 		const fname = document.querySelector('#firstName');
+		 		const lname = document.querySelector('#lastName');
+				const babyButton = document.querySelector('#babyButton');
+				babyButton.addEventListener('click', () => {
+					fname.textContent = firstName();
+				});
+
+				document.addEventListener('DOMContentLoaded', function() {
+				    fname.textContent = possibleNames[0];
+				}, false);
+		 	}
+		 </script>
+	</head>
+	<body>
+	<div class="inputs">
+	  <button class="bx--btn bx--btn--primary" id="babyButton">New Name</button>
+	</div>
+	<div class="output">
+	  <span id="firstName">Joe</span>
+	  &nbsp;
+	  <span id="lastName">Egan</span>
+	</div>
+</body>
+</html>
