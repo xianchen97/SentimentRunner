@@ -1,5 +1,4 @@
 var random_name = require('node-random-name');
-
 function getRandomLastName(){
 
 }
