@@ -35,21 +35,27 @@ onload = function(){
 
   });
 
-  $('#lastName').keydown(function(e) {
-    // trap the return key being pressed
+  $('#firstName').keydown(function(e) {
+    var fieldValue = document.querySelector('#firstName');
     if (e.keyCode === 13) {
+      var fieldValue = document.querySelector('#firstName');
+      console.log("seed" + fieldValue.value);
+      fname.textContent = seed(fieldValue.value);
       // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
       // prevent the default behaviour of return key pressed
       return false;
     }
+    else{
+      console.log("enteed " + fieldValue.value);
+      document.querySelector('#firstName').value = this.innerHTML;
+    }
   });
 
-   $('#firstName').keydown(function(e) {
+   $('#lastName').keydown(function(e) {
     // trap the return key being pressed
     if (e.keyCode === 13) {
       // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
       // prevent the default behaviour of return key pressed
-      fname = random_name({ seed: fname.textContent })
       return false;
     }
   });
@@ -78,4 +84,10 @@ window.gender = function getNameGender(name){
             
  });
 
+}
+
+function seed(name){
+  var name =  random_name({ seed: name });
+  var arr = name.split(" ");
+  return arr[0];
 }
